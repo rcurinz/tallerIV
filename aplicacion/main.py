@@ -11,6 +11,8 @@ def index():
     user_collection.insert({'name' : 'pepe'})
     return '<h1>Added a User!</h1>'
 
+	
+Prueba
 """
  tutorial:
 
