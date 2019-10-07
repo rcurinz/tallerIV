@@ -1,7 +1,7 @@
 import pymongo
 from pymongo import MongoClient
 
-
+#holaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 class Conector:
     def __init__(self):
         self.mongoClient = MongoClient("mongodb://rele:1234@201.239.71.43:27017/talleriv")
