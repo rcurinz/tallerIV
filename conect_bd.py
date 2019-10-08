@@ -14,17 +14,38 @@ class Conector:
         for fut in cursor:
             print (fut)
 
-    def agregarMedico(self, rut,nombre, esp, fono, email):
+    def agregarMedico(self, rut,nombre, passwd,esp, fono, email):
         users = self.db.medico
         dostor = {
             'rut': rut,
-            'nombre': nombre,
+            'name': nombre,
+            'passwd':passwd,
             'especialidad':esp,
             'telefono': fono,
             'email': email
         }
         users.insert_one(dostor)
 
+    def eliminarMedico(self,Rut):
+        user= self.db.medico
+        user.delete_one({"rut":Rut})
+
+    def encontrar(self, Nombre, Passwd):
+        users = self.db.medico
+        va = users.find({"name": Nombre})
+
+        for x in va:
+            if (x['passwd'] != Passwd):
+                print("error de datos")
+            else:
+                print("datos correctos")
+
+
+
+
+
 con = Conector()
-con.consultas("medico")
-con.agregarMedico("186729137", "rene", "dormir","696969696","que@te.importa")
+#con.consultas("medico")
+#con.agregarMedico("1111", "lesly", "1234","dormir","696969696","que@te.importa")
+#con.eliminarMedico("186729137")
+#con.encontrar("lesly","12334")
