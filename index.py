@@ -13,16 +13,18 @@ def index():
 
 @app.route("/login" ,methods = ['POST', 'GET'])
 def validar():
+
     if request.method == 'POST':
        rut = request.form['id']
        clave = request.form['clave']
        valor = encontrar(rut,clave)
-       if(valor==1):
-           return render_template("index.html")
+       if(valor== True):
            print("datos correctos")
+           return render_template("index.html")
        else:
+           Mensaje='datos incorrectos'
            print("datos erroneos")
-       return render_template("login.html")
+           return render_template("/login.html", mensaje=Mensaje)
 
 
 def encontrar(Rut, Passwd):
