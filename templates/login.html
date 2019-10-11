@@ -32,20 +32,20 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Iniciar Sesión</h1>
                   </div>
-                  <form class="user">
+                  <form class="user"  action = "http://localhost:5000/login" method = "POST">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Usuario">
+                      <input type="text" class="form-control form-control-user" name="id" id="id"  placeholder="Rut">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
+                      <input type="password" class="form-control form-control-user" name= "clave" id="clave" placeholder="Contraseña">
                     </div>
                     <div class="form-group">
 
                     </div>
                       <hr>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    <input type = "submit" value = "login"  class="btn btn-primary btn-user btn-block"/>
+                    <div class="text-center"><p class="text-danger">{{mensaje}}</p></div>
+
 
 
                   </form>
