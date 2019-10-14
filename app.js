@@ -8,7 +8,7 @@ const app = express();
 //Conexion a BD
 const mongoose = require('mongoose');
 
-const uri = 'mongodb://localhost:27017/talleriv';
+const uri = 'mongodb://rele:1234@201.239.71.43:27017/talleriv';
 const options = {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true};
 
 mongoose.connect(uri, options).then(

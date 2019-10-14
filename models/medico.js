@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const medicoSchema = new Schema({
   nombre: {type: String, required: [true, 'Nombre obligatorio']},
   rut: {type: String, requiered: [true, 'Rut Obligatorio']},
+  passwd:{type: String, requiered: [true, 'password obligatorio']},
   especialidad: String,
   numero: String,
   fecha:{type: Date, default: Date.now},

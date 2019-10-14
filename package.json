@@ -1,7 +1,6 @@
 {
   "name": "Final_proyecto_iv",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon app.js",
@@ -22,5 +21,14 @@
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcurinz/tallerIV.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rcurinz/tallerIV/issues"
+  },
+  "homepage": "https://github.com/rcurinz/tallerIV#readme",
+  "description": ""
 }
