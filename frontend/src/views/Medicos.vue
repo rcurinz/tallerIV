@@ -1,46 +1,45 @@
-<template>
+<template  >
+
+    <!-- container -->
     <div class="container">
-        <h1>Medicos</h1>
-        <b-alert
-            :show="dismissCountDown"
-            dismissible
-            :variant="mensaje.color"
-            @dismissed="dismissCountDown=0"
-            @dismiss-count-down="countDownChanged"
-         >
-          {{mensaje.texto}}
-         </b-alert>
-            <form @submit.prevent="agregarMedico()">
-                <h3>agregar nuevo medico</h3>
-                <input type="text" class="form-control my-2" placeholder="Nombre" v-model="medico.nombre">
-                <input type="text" class="form-control my-2" placeholder="Rut" v-model="medico.rut">
-                <b-button class="btn-success my-2 btn-block" type="submit">Agregar</b-button>
-            </form>
+        <div class="row justify-content-center">
 
+            <div class="col-xl-6 col-lg-12 col-md-9">
 
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                                
+                        <div class="row">
+                                
+                            <div class="col-lg-12">
+                                <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Iniciar Sesión</h1>
+                                        </div> 
+                                           
 
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Rut</th>
-                <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="(item, index) in medicos" :key="index">
-                <th scope="row">{{item._id}}</th>
-                <td>{{item.nombre}}</td>
-                <td>{{item.rut}}</td>
-                <td>
-                    <!-- <b-button @click="alerta()">accion</b-button> -->
-                    <b-button @click="eliminarMedico(item._id)" class="btn-danger">eliminar</b-button>
-                </td>
-                </tr>    
-            </tbody>
-        </table>
-    
+                                        <b-alert :show="dismissCountDown" dismissible :variant="mensaje.color" @dismissed="dismissCountDown=0"  @dismiss-count-down="countDownChanged"  >
+                                            {{mensaje.texto}}
+                                        </b-alert>
+
+                                        <form class="user" @submit.prevent="editarMedico()" v-if="editar">                                                
+                                            <div class="form-group">
+                                                <input type="text" id="Rut" class="form-control form-control-user" placeholder="rut" v-model="medicoEditar.nombre">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" id="Clave" class="form-control form-control-user" placeholder="clave" v-model="medicoEditar.rut">
+                                            </div> 
+                                            <b-button  to="/index" class="btn btn-info  btn-block rounde" type="submit">Login</b-button>                                                                                                        
+                                        </form>                                            
+                                            
+                                </div>
+                            </div>
+                        </div>                    
+                    </div>                 
+                </div>
+            </div>
+        </div>       
+    <!-- end container -->
     </div>
 </template>
 
@@ -52,7 +51,10 @@ export default {
              dismissSecs: 5,
              dismissCountDown: 0,
              mensaje:{color:'',texto:''},
-             medico:{nombre:'',rut:''}
+             medico:{nombre:'',rut:''},
+             editar:true,
+             ver:true,
+             medicoEditar:{}
 
 
         }
@@ -113,6 +115,48 @@ export default {
                 .catch( e => {
                 console.log(e.response);
                 })
+        },
+
+        activarEdicion(id){
+            this.editar = true;
+            console.log(id)
+            this.axios.get(`medico/${id}`)
+                .then(res =>{
+                    // this.medicoEditar= res.data;
+                    
+
+                })
+                .catch(e =>{
+                    console.log(e.response);
+                })
+
+        },
+        editarMedico(){
+            //console.log(Rut.value)
+            this.axios.get(`medico/${Rut.value}`)
+                .then(res =>{
+                   
+                    if(res.data.passwd == Clave.value){
+                         location.href="Index.vue";
+                         this.ver=false;
+                         this.mensaje.color = 'success';
+                         this.mensaje.texto = 'datos corerctos';
+                         this.showAlert();
+                    }else{
+                        this.mensaje.color = 'danger';
+                        this.mensaje.texto = 'datos incorrectos';
+                        this.showAlert();
+                        console.log('distintos')
+                    }
+                    
+
+                })
+                .catch(e =>{
+                    console.log(e.response);
+                })
+
+            
+           
         },
 
         countDownChanged(dismissCountDown) {

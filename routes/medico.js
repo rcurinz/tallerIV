@@ -20,9 +20,9 @@ router.post('/nuevo-medico', async(req, res) => {
 
 // Get con parámetros
 router.get('/medico/:id', async(req, res) => {
-    const _id = req.params.id;
+    const rut = req.params.id;
     try {
-      const notaDB = await Medico.findOne({_id});
+      const notaDB = await Medico.findOne({rut});
       res.json(notaDB);
     } catch (error) {
       return res.status(400).json({

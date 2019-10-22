@@ -22,6 +22,11 @@ export default new Router({
       path: '/medicos',
       name: 'medicos',     
       component: () => import(/* webpackChunkName: "about" */ './views/Medicos.vue')
+    },
+    {
+      path: '/index',
+      name: 'index',     
+      component: () => import(/* webpackChunkName: "about" */ './views/Index.vue')
     }
   ]
 })
