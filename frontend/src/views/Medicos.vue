@@ -29,7 +29,7 @@
                                             <div class="form-group">
                                                 <input type="password" id="Clave" class="form-control form-control-user" placeholder="clave" v-model="medicoEditar.rut">
                                             </div> 
-                                            <b-button  to="/index" class="btn btn-info  btn-block rounde" type="submit">Login</b-button>                                                                                                        
+                                            <b-button  class="btn btn-info  btn-block rounde" type="submit">Login</b-button>                                                                                                        
                                         </form>                                            
                                             
                                 </div>
@@ -55,7 +55,6 @@ export default {
              editar:true,
              ver:true,
              medicoEditar:{}
-
 
         }
 
@@ -134,10 +133,9 @@ export default {
         editarMedico(){
             //console.log(Rut.value)
             this.axios.get(`medico/${Rut.value}`)
-                .then(res =>{
-                   
+                .then(res =>{                   
                     if(res.data.passwd == Clave.value){
-                         location.href="Index.vue";
+                         //location.href="/Index.vue";
                          this.ver=false;
                          this.mensaje.color = 'success';
                          this.mensaje.texto = 'datos corerctos';
@@ -147,8 +145,7 @@ export default {
                         this.mensaje.texto = 'datos incorrectos';
                         this.showAlert();
                         console.log('distintos')
-                    }
-                    
+                    }                   
 
                 })
                 .catch(e =>{
