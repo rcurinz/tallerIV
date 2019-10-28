@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import router from '../router.js'
 export default {
     data(){
         return{
@@ -133,14 +134,16 @@ export default {
         editarMedico(){
             //console.log(Rut.value)
             this.axios.get(`medico/${Rut.value}`)
-                .then(res =>{                   
+                .then(res =>{ 
+                                  
                     if(res.data.passwd == Clave.value){
-                         //location.href="/Index.vue";
+                         location.href="/index";
                          this.ver=false;
                          this.mensaje.color = 'success';
                          this.mensaje.texto = 'datos corerctos';
                          this.showAlert();
-                    }else{
+                    }                                
+                    else{
                         this.mensaje.color = 'danger';
                         this.mensaje.texto = 'datos incorrectos';
                         this.showAlert();
