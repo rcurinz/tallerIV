@@ -3,3 +3,4 @@
     <h1>esto es el index ...</h1>
   </div>
 </template>
+

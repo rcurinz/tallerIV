@@ -21,6 +21,8 @@
                                         <b-alert :show="dismissCountDown" dismissible :variant="mensaje.color" @dismissed="dismissCountDown=0"  @dismiss-count-down="countDownChanged"  >
                                             {{mensaje.texto}}
                                         </b-alert>
+                                        
+                                                     
 
                                         <form class="user" @submit.prevent="editarMedico()" v-if="editar">                                                
                                             <div class="form-group">
@@ -137,7 +139,9 @@ export default {
                 .then(res =>{ 
                                   
                     if(res.data.passwd == Clave.value){
-                         location.href="/index";
+                        this.$router.push({path: '/in'})
+                        //window.location.href ='./index.html';
+                        // location.href="./index.html";
                          this.ver=false;
                          this.mensaje.color = 'success';
                          this.mensaje.texto = 'datos corerctos';
@@ -158,6 +162,11 @@ export default {
             
            
         },
+        
+        
+
+
+
 
         countDownChanged(dismissCountDown) {
         this.dismissCountDown = dismissCountDown

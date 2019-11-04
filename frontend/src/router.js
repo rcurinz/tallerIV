@@ -26,7 +26,20 @@ export default new Router({
     {
       path: '/index',
       name: 'index',     
-      component: () => import(/* webpackChunkName: "about" */ './views/Index.vue')
-    }
+      component: () => import(/* webpackChunkName: "about" */ './views/index.vue')
+    },
+    {
+      path: '/in',
+      name: 'in',
+      beforeEnter(to, from, next) {
+          // Put the full page url including the protocol http(s) below
+          window.location ="http://localhost/carp/examples/index.html"
+      }
+  },
+  {
+    path: '/cargar',
+    name: 'cargar',     
+    component: () => import(/* webpackChunkName: "about" */ './views/cargar.vue')
+  },
   ]
 })
