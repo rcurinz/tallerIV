@@ -1,4 +1,5 @@
 <template>
+    <!-- esta pagina carga un archivo xml y lo combierte en json -->
 	<div id="app">
         
       

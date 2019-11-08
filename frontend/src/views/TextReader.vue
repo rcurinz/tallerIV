@@ -1,4 +1,6 @@
 <template>
+    <!-- cargador de archivo -->
+    <!-- ejecutar = npm install --save xml-js -->
   <label class="text-reader btn btn-success  rounde"> 
    cargar archivo
     <input type="file" @change="loadTextFromFile">

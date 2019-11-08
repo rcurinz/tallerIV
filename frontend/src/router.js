@@ -37,9 +37,19 @@ export default new Router({
       }
   },
   {
-    path: '/cargar',
+    path: '/cargar', /* cargar archivo xml y convertirlo a json */
     name: 'cargar',     
     component: () => import(/* webpackChunkName: "about" */ './views/cargar.vue')
+  },
+  {
+    path: '/editor1',
+    name: 'editor1',     
+    component: () => import(/* webpackChunkName: "about" */ './views/editor1.vue')
+  },
+  {
+    path: '/editor2',
+    name: 'editor2',     
+    component: () => import(/* webpackChunkName: "about" */ './views/editor2.vue')
   },
   ]
 })
