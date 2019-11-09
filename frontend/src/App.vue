@@ -3,7 +3,7 @@
     <div id="nav" v-if="ver">
     <!--   <router-link to="/">Home</router-link> | -->
       <router-link to="/about">About</router-link>  | 
-      <router-link to="/medicos">login</router-link>
+      <router-link to="/medicos">login</router-link> hola
     </div>
     <router-view/>
   </div>

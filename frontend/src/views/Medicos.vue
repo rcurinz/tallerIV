@@ -2,6 +2,7 @@
 
     <!-- container -->
     <div class="container">
+        <cabecera></cabecera>
         <div class="row justify-content-center">
 
             <div class="col-xl-6 col-lg-12 col-md-9">
@@ -47,7 +48,11 @@
 
 <script>
 import router from '../router.js'
+import  cabecera from '../components/cabecera.vue'
 export default {
+    components:{
+      cabecera
+    },
     data(){
         return{
             medicos:[],

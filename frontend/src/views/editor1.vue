@@ -1,17 +1,16 @@
 <template>
-    <!-- ejecutar= npm install vue-free-transform --save  -->    
-  <div id="app">
-    
-    <div class="App">
+  
+        
+    <!-- ejecutar= npm install vue-free-transform --save  -->   
+    <div>
+      <cabecera></cabecera>
       
-      <div class="wrapper"> 
-        <h1>Editor</h1>
-          <div class="container">
-              <div class="row justify-content-center">
+      <div class="row">
+        <div class="col" > <!-- columna 1 -->
+                  
 
 
-                  <div class="col-sm"> <!-- columna 1 -->
-                    <div class="workspace" ref="workspace">
+                <div class="workspace" ref="workspace">
                       <FreeTransform
                         v-for="element in elements"
                         :key="element.id"
@@ -33,37 +32,51 @@
                       </FreeTransform>
                     </div>
 
-                  </div> <!-- fin columna 1 -->
 
-                  <div class="col-sm "> <!-- columna 2 -->
-                    <div class="text-center">
-                      <h1>panel</h1>
-                    </div>
-                  </div> <!-- fin columna 2 -->
+        </div> <!-- fin columna 1 -->
 
-              </div>
+        <div class="col " style="background-color:White;"> <!-- columna 2 -->
+             <form>
+                <div class="form-row float-right">
+                  <div class="col-9">
+                     <input type="text" class="form-control" placeholder=nombre>
+                     <hr>
+                     <input type="text" class="form-control" placeholder="texto...">
+                  </div>
+                  <div class="col">
+                    <b-button  class=" form-control btn btn-info  btn-circle " type="submit">ok</b-button>
+                    <hr> 
+                    <b-button  class=" form-control btn btn-info  btn-circle " type="submit">ok</b-button>                                                                                                          
+                  </div>
+                          
+                </div>
+              </form>         
 
-          </div>
-
-        <!-- ----------------------------- -->
-        
-        
-        <!-- ------------------------------ -->
-        
+                      
+        </div> <!-- fin columna 2 -->
       </div>
-    </div>
-  </div>
+
+
+
+
+      
+    </div> 
+  
+                
+          
   
 </template>
 
 
 
 <script>
+import  cabecera from '../components/cabecera.vue'
 import FreeTransform from "vue-free-transform";
 
 export default {
   name: "app",
   components: {
+    cabecera,
     FreeTransform
   },
   data() {
@@ -167,22 +180,29 @@ export default {
 
 <style>
 #app {
-  display: flex;
-  background: #f8fafc;
+  background:rgb(255, 255, 255);;
 }
 
 .wrapper {
   flex: 1;
 }
 
-.workspace {
-  width: 800px;
-  height: 800px;
-  margin: 25px auto;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: #fff;
+.btn-circle {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
 }
+
+ .workspace {
+  width: 1100px;
+  height: 600px; 
+  border: solid;
+  background: #0283ce;
+} 
 
 * {
   box-sizing: border-box;
