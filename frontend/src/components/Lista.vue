@@ -21,10 +21,12 @@ import {mapState, mapMutations} from 'vuex';
 export default {
   name: 'lista' ,
   computed:{
-      ...mapState(['frutas'])
+      ...mapState(['frutas']),
+      ...mapState(['Nodos'])
   },
   methods:{
-      ...mapMutations(['aumentar'])
+      ...mapMutations(['aumentar']),
+      ...mapMutations(['Pnodos'])
   }
 }
 </script>

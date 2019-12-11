@@ -145,7 +145,7 @@ export default {
                                   
                     if(res.data.passwd == Clave.value){
                        // this.$router.push({path: '/in'})
-                        this.$router.push({path: '/editor1'})
+                        this.$router.push({path: 'editor1'})
                         //window.location.href ='./index.html';
                         // location.href="./index.html";
                          this.ver=false;

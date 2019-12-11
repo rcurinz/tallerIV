@@ -7,7 +7,7 @@
    
     <br>
 		<text-reader  @load="text = $event"></text-reader>
-         <b-button  class="text-reader btn btn-info rounde"  @click="mostrar()">convertir a json</b-button>
+         <b-button  class="text-reader btn btn-info rounde" @click="mostrar()">convertir json</b-button>
 	</div>
 
     
@@ -24,7 +24,7 @@ export default {
   },
 methods: {
     mostrar(){
-               
+        //console.log('holaa');
         //console.log(this.text);
         var convert = require('xml-js');         
         var xml = this.text;
@@ -34,6 +34,7 @@ methods: {
             var result1 = convert.xml2json(xml, {compact: true, spaces: 4});
             var result2 = convert.xml2json(xml, {compact: false, spaces: 4});
             console.log(result1,'\n  hoaaa', result2);
+           
 
 
     },

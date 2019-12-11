@@ -25,7 +25,8 @@
                         :offset-y="offsetY"
                         :disable-scale="element.disableScale === true"
                         @update="update(element.id, $event);"
-                      >
+                        @click="obtenerId(element)"
+                     >
                         <div class="element" :style="getElementStyles(element)">
                           {{ element.text }}
                         </div>
@@ -36,17 +37,17 @@
         </div> <!-- fin columna 1 -->
 
         <div class="col " style="background-color:White;"> <!-- columna 2 -->
-             <form>
+             <form >
                 <div class="form-row float-right">
                   <div class="col-9">
-                     <input type="text" v-model="texto" class="form-control" placeholder=nombre>
+                     <input type="text" v-model="tex" class="form-control" placeholder="texto...">
                      <hr>
-                     <input type="text" class="form-control" placeholder="texto...">
+                     
                   </div>
                   <div class="col">
-                    <b-button  class=" form-control btn btn-info  btn-circle "  @click="mos(texto)">ok1</b-button>
+                    <b-button  class=" form-control btn btn-info  btn-circle "  @click="CmbiarText(tex)">ok</b-button>
                     <hr> 
-                    <b-button  class=" form-control btn btn-info  btn-circle " type="submit">ok</b-button>                                                                                                          
+                                                                                                                            
                   </div>
                           
                 </div>
@@ -74,34 +75,21 @@ import  cabecera from '../components/cabecera.vue'
 import FreeTransform from "vue-free-transform";
 import {mapState, mapMutations} from 'vuex';
 
+
 export default {
   name: "app",
   components: {
     cabecera,
     FreeTransform
-  },
-   computed:{
-      
-      ...mapState(['Nodos'])
-  },
+  },  
  
   data() {
     return {
-      elements: [
-        {
-          id: "el-1",
-          x: 100,
-          y: 50,
-          scaleX: 1,
-          scaleY: 1,
-          width: 100,
-          height: 100,
-          angle: 0,
-          classPrefix: "tr",
-          styles: {
-            background: "linear-gradient(135deg, #0FF0B3 0%,#036ED9 100%)"
-          }
-        },
+        getid:"",
+
+
+        elements: [
+        
         {
           id: "el-2",
           x: 225,
@@ -117,43 +105,28 @@ export default {
             padding: `5px`,
             background: "linear-gradient(135deg, #fad961 0%,#f76b1c 100%)"
           }
-        },
+        },  
         {
           id: "el-3",
-          x: 100,
-          y: 225,
+          x: 50,
+          y: 50,
           scaleX: 1,
           scaleY: 1,
           width: 100,
           height: 100,
           angle: 0,
           classPrefix: "tr2",
-          text: "Scale Disabled",
+          text: "nodo2",
           styles: {
-            padding: 5,
-            width: "100%",
-            height: "100%",
+            padding: `5px`,
             background: "linear-gradient(135deg, #fad961 0%,#f76b1c 100%)"
-          },
-          disableScale: true
-        },
-        {
-          id: "el-4",
-          x: 100,
-          y: 400,
-          scaleX: 1,
-          scaleY: 1,
-          width: 100,
-          height: 100,
-          angle: 45,
-          classPrefix: "tr3",
-          styles: {
-            background: "linear-gradient(135deg, #b1ea4d 0%,#459522 100%)"
           }
-        }
+        }      
+      
       ],
-      offsetX: 0,
-      offsetY: 0
+      offsetX: 100,
+      offsetY: 100
+      
     };
   },
   mounted() {
@@ -161,9 +134,21 @@ export default {
     this.offsetY = this.$refs.workspace.offsetTop;
   },
   methods: {
-    ...mapMutations(['Pnodos']),
-    mos(tex){
-      console.log(tex)
+    
+    CmbiarText(texto){// cambia el texto del nodo
+        for (var i in this.elements) {
+            if(this.elements[i].id===this.getid){
+                this.elements[i].text= texto
+            }
+            
+        }           
+      
+    
+    },
+    obtenerId(elemento){// obtie la id del nodo pa cambiar el texto
+        //console.log(elemento.id)
+        this.getid= elemento.id
+       // console.log(this.getid)
     },
 
     update(id, payload) {

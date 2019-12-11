@@ -1,46 +1,33 @@
 <template>
-    <div id="app" class="container">
-
-        <cabecera></cabecera>
-        <h3>hola     
-        </h3>
-
-
-        <input type="text">
-
-        <Lista></Lista>
-        
-
-    </div>
+  <div class="container">
     
+    <vue-mermaid :nodes="data" type="graph LR" @nodeClick="editNode"></vue-mermaid>
+   <h1>hola</h1>
+  </div>
 </template>
 
 <script>
-import  cabecera from '../components/cabecera.vue'
-import  Lista from '../components/Lista.vue'
+//import  cabecera from '../lib/index.js'
 export default {
-  name: 'HelloWorld',
-  components:{
-      cabecera,
-      Lista
+  data:function(){
+    return {
+      data:[
+        {id:'1',text:'A',link:'---',next:['2'],editable:true},
+        {id:'2',text:'B',edgeType:'circle',next:['3']},
+        {id:'3',text:'C',next:['4','6']},
+        {id:'4',text:'D',link:'-- This is the text ---',next:['5']},
+        {id:'5',text:'E'},
+        {id:'6',text:'F'}
+      ]
+    }
+  },
+  methods:{
+    editNode(nodeId) {
+     alert(nodeId);
+    },
   }
 }
-</script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+
+
+</script>

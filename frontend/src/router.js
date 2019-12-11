@@ -42,14 +42,19 @@ export default new Router({
     component: () => import(/* webpackChunkName: "about" */ './views/cargar.vue')
   },
   {
-    path: '/editor1',
-    name: 'editor1',     
-    component: () => import(/* webpackChunkName: "about" */ './views/editor1.vue')
+    path: '/editor3',
+    name: 'editor3',     
+    component: () => import(/* webpackChunkName: "about" */ './views/editor3.vue')
+  },  
+  {
+    path: '/test',
+    name: 'test',     
+    component: () => import(/* webpackChunkName: "about" */ './views/test.vue')
   },
   {
-    path: '/editor2',
-    name: 'editor2',     
-    component: () => import(/* webpackChunkName: "about" */ './views/editor2.vue')
-  },
+    path: '/test-tree',
+    name: 'test-tree',     
+    component: () => import(/* webpackChunkName: "about" */ './views/test-tree.vue')
+  }
   ]
 })
