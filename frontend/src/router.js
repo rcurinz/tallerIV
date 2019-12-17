@@ -26,7 +26,7 @@ export default new Router({
     {
       path: '/index',
       name: 'index',     
-      component: () => import(/* webpackChunkName: "about" */ './views/index.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/Index.vue')
     },
     {
       path: '/in',
@@ -45,7 +45,12 @@ export default new Router({
     path: '/editor3',
     name: 'editor3',     
     component: () => import(/* webpackChunkName: "about" */ './views/editor3.vue')
-  },  
+  },
+  {
+    path: '/editor4',
+    name: 'editor4',     
+    component: () => import(/* webpackChunkName: "about" */ './views/editor4.vue')
+  },
   {
     path: '/test',
     name: 'test',     
