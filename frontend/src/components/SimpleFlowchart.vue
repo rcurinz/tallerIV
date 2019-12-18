@@ -16,7 +16,7 @@
       :options="nodeOptions"
       @linkingStart="linkingStart(node.id)"
       @linkingStop="linkingStop(node.id)"
-      @nodeSelected="nodeSelected(node.id, $event)">
+      @nodeSelected="nodeSelected(node.id, node.label , $event)">
     </flowchart-node>
   </div>
 </template>
@@ -174,10 +174,10 @@ export default {
         this.$emit('linkBreak', deletedLink);
       }
     },
-    nodeSelected(id, e) {
+    nodeSelected(id, label, e) {
       this.action.dragging = id;
       this.action.selected = id;
-      this.$emit('nodeClick', id);
+      this.$emit('nodeClick', id, label);
       this.mouse.lastX = e.pageX || e.clientX + document.documentElement.scrollLeft
       this.mouse.lastY = e.pageY || e.clientY + document.documentElement.scrollTop
     },

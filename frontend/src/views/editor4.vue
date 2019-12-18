@@ -6,18 +6,18 @@
         <option v-for="(item, index) in nodeCategory" :key="index" :value="index">{{item}}</option>
       </select>
       <input type="text" v-model="newNodeLabel" placeholder="Input node label">
-      <button @click="addNode">ADD</button>
+      <button @click="addNode">Agregar Nodo</button>
     </div>
         <div class="col " style="background-color:White;"> <!-- columna 2 -->
              <form >
                 <div class="form-row float-right">
                   <div class="col-5">
-                     <input type="text" v-model="tex" class="form-control" placeholder="texto..." value="">
+                     <input type="text" name="NuevoT" id="NuevoT" class="form-control" placeholder="texto..."  v-model="editNodeLabel">
                      <hr>
                      
                   </div>
                   <div class="col">
-                    <b-button  class=" form-control btn btn-info  btn-circle "  @click="CmbiarText(tex)">ok</b-button>
+                    <b-button  class=" form-control btn btn-info  btn-circle "  @click="modificarNodo(IdeditNodeLabel, editNodeLabel)">Modificar</b-button>
                     <hr> 
                                                                                                                             
                   </div>
@@ -48,6 +48,8 @@ export default {
   },
   data() {
     return {
+      editNodeLabel:"",
+      IdeditNodeLabel: 0,
       scene: {
         centerX: 1024,
         centerY: 140,
@@ -85,7 +87,6 @@ export default {
       },
       newNodeType: 0,
       newNodeLabel: '',
-      editNodeLabel:'',
       nodeCategory:[
         'rule',
         'action',
@@ -112,8 +113,10 @@ export default {
         label: this.newNodeLabel ? this.newNodeLabel: `test${maxID + 1}`,
       })
     },
-    nodeClick(id, label) {
-      console.log('node click', id, label);
+    nodeClick(id,label) {
+      //console.log('node click', id,label);
+      this.editNodeLabel = label;
+      this.IdeditNodeLabel = id;
     },
     nodeDelete(id) {
       console.log('node delete', id);
@@ -123,6 +126,16 @@ export default {
     },
     linkAdded(link) {
       console.log('new link added:', link);
+    },
+    //id: numero de nodo 
+    modificarNodo(id, texto){
+      //console.log(this.scene.nodes[id].label)
+      var x =0;
+      for(x; x<this.scene.nodes.length;x++){
+        if(this.scene.nodes[x].id===id){
+          this.scene.nodes[x].label = texto
+        }
+      }
     }
   }
 }
